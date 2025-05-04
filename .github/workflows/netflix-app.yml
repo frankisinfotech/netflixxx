@@ -23,7 +23,7 @@ jobs:
         
         ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
-    - name: Deploy to VM
+    - name: Deploy to VM 
       run: |
         # sudo rsync  -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
         sudo rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no -i private_key" ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
