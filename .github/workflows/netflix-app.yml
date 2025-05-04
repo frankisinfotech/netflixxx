@@ -17,10 +17,15 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.VM_KEY }}" > private_key
         chmod 600 ~/.ssh/id_rsa
+        chmod 600 private_key
+        
         ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
     - name: Deploy to VM
       run: |
-        sudo rsync -o StrictHostKeyChecking=no -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
+        sudo rsync  -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
+        # sudo rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no -i private_key" ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
+
 
