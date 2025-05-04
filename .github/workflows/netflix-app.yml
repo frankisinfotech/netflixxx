@@ -22,4 +22,4 @@ jobs:
 
     - name: Deploy to VM
       run: |
-        rsync -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
+        sudo rsync -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
