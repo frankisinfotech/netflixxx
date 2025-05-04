@@ -25,5 +25,5 @@ jobs:
             sudo yum install httpd git -y
             sudo systemctl restart httpd
             sudo git clone https://github.com/pro-prodipto/Netflix-Website-Project.git
-            sudo cd /home/${{ secrets.USERNAME }}/Netflix-Website-Project && sudo cp * /var/www/html 
+            sudo cp -r /home/${{ secrets.USERNAME }}/Netflix-Website-Project/* /var/www/html 
           EOF
