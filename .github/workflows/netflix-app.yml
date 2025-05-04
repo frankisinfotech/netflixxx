@@ -22,4 +22,5 @@ jobs:
 
     - name: Deploy to VM
       run: |
-        sudo rsync -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
+        sudo rsync -o StrictHostKeyChecking=no -avz --delete ./ ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIR }}
+
