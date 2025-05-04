@@ -23,7 +23,7 @@ jobs:
       run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
             sudo yum install httpd git -y
-            sudo ls -l /var
             sudo git clone https://github.com/pro-prodipto/Netflix-Website-Project.git
+            sudo ls -l /root
             sudo cd Netflix-Website-Project && sudo cp * /var/www/html 
           EOF
