@@ -36,7 +36,5 @@ jobs:
     - name: Deploy to EC2
       run: |
           ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.USERNAME }}@${{ secrets.HOST }} << 'EOF'
-            # commands to execute on EC2
-            cd /path/to/your/app
-            git pull origin main
+            sudo cp ./* /var/www/html
           EOF
